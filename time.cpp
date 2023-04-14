@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "time.h"
+#include "movie.h"
+#include "timeslot.h"
 
 //write a printer function that prints a Time value on the screen in HOURS:MINUTES format:
 void printTime(Time time) {
@@ -20,9 +22,33 @@ int minutesUntil(Time earlier, Time later){
     return (later.h - earlier.h) * 60 + (later.m - earlier.m);
 }
 
+//task B
 //should create and return a new moment of time that is 'min' minutes after 'time0'.
 Time addMinutes(Time time0, int min){
     time0.h += min / 60;
     time0.m += min % 60;
+    if (time0.m >= 60) {
+        time0.h += time0.m / 60;
+        time0.m %= 60;
+    }
     return time0;
+}
+
+void printMovie(Movie mv){
+    std::string g;
+    switch (mv.genre) {
+        case ACTION   : g = "ACTION"; break;
+        case COMEDY   : g = "COMEDY"; break;
+        case DRAMA    : g = "DRAMA";  break;
+        case ROMANCE  : g = "ROMANCE"; break;
+        case THRILLER : g = "THRILLER"; break;
+    }
+    std::cout << mv.title << " " << g << " (" << mv.duration << " min)";
+}
+
+void printTimeSlot(TimeSlot ts){
+   Time endTime = addMinutes(ts.startTime, ts.movie.duration);
+   printMovie(ts.movie);
+   std::cout << " [starts at " << ts.startTime.h << ":" << ts.startTime.m 
+              << ", ends by " << endTime.h << ":" << endTime.m << "]" << "\n";
 }
