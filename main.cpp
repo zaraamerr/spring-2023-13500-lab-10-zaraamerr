@@ -20,13 +20,26 @@ int main() {
     printTime(time3); //should print 13:40
     //test Movie and TimeSlot
     Movie movie1 = {"Back to the Future", COMEDY, 116};
-    Movie movie2 = {"Black Panther", ACTION, 134};
-    TimeSlot morning = {movie1, Time{9, 15}};  
+    Movie movie2 = {"Black Panther", THRILLER, 134};
+    Movie movie3 = {"Titanic", ROMANCE, 194};
+    Movie movie4 = {"Inception", DRAMA, 148};
+    Movie movie5 = {"Avengers Endgame", ACTION, 200};
+    TimeSlot morning = {movie1, Time{9, 15}};
     TimeSlot daytime = {movie2, Time{12, 15}}; 
-    TimeSlot evening = {movie2, Time{16, 45}}; 
+    TimeSlot evening = {movie1, Time{16, 45}}; 
+    TimeSlot dawn = {movie4, Time{6, 15}};
+    TimeSlot dusk = {movie3, Time{19, 10}}; 
+    TimeSlot night = {movie5, Time{20, 45}}; 
     printTimeSlot(morning); //should print Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]
     printTimeSlot(daytime); //should print Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]
     printTimeSlot(evening); //should print Black Panther ACTION (134 min) [starts at 16:45, ends by 18:59]
+    printTimeSlot(dawn); //should print Inception DRAMA (148 min) [starts at 6:15, ends by 8:43]
+    printTimeSlot(dusk); //should print Titanic ROMANCE (194 min) [starts at 19:10, ends by 22:24]
+    printTimeSlot(night); //should print Avengers Endgame ACTION (200 min) [starts at 20:45, ends by 23:05]
+    //test scheduleAfter
+    TimeSlot nextSlot = scheduleAfter(morning, movie2);
+    printTimeSlot(nextSlot); //should print Black Panther THRILLER (134 min) [starts at 11:11, ends by 13:25]
+
 
     return 0;
 }

@@ -7,3 +7,4 @@ public:
 };
 
 void printTimeSlot(TimeSlot ts);
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie);

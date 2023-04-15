@@ -46,9 +46,19 @@ void printMovie(Movie mv){
     std::cout << mv.title << " " << g << " (" << mv.duration << " min)";
 }
 
+//task c
 void printTimeSlot(TimeSlot ts){
    Time endTime = addMinutes(ts.startTime, ts.movie.duration);
    printMovie(ts.movie);
    std::cout << " [starts at " << ts.startTime.h << ":" << ts.startTime.m 
               << ", ends by " << endTime.h << ":" << endTime.m << "]" << "\n";
+}
+
+//task d
+//should produce and return a new TimeSlot for the movie 'nextMovie', scheduled immediately after the time slot 'ts'
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
+    TimeSlot nextSlot;
+    nextSlot.movie = nextMovie;
+    nextSlot.startTime = addMinutes(ts.startTime, ts.movie.duration);
+    return nextSlot;
 }
