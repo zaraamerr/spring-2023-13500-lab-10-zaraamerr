@@ -62,3 +62,21 @@ TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie){
     nextSlot.startTime = addMinutes(ts.startTime, ts.movie.duration);
     return nextSlot;
 }
+
+//task e
+//should return true if the two time slots overlap, otherwise return false. 
+//(Take into account the starting times of the time slots and the duration of the scheduled movies.)
+/*Hint: You may use minutesUntil to check which time slot is earlier, then find the how long is the interval between their starting
+times. They overlap if the movie duration is greater than the interval between the time slots’ starting times. Alternatively, 
+converting times into minutes since midnight can be a good idea as well. (By the way, if you want to be accurate, if one movie starts
+at 10:00 and lasts 90 minutes until 11:30, then it does not overlap with a movie that starts exactly at 11:30. However, they would 
+overlap if the latter movie started one minute earlier, at 11:29.)*/
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2) {
+     if(minutesSinceMidnight(ts1.startTime) < minutesSinceMidnight(ts2.startTime)) {
+        return ts1.movie.duration > (minutesSinceMidnight(ts2.startTime) - minutesSinceMidnight(ts1.startTime));
+    } else {
+        return ts2.movie.duration > (minutesSinceMidnight(ts1.startTime) - minutesSinceMidnight(ts2.startTime));
+    }
+}
+
+
