@@ -56,13 +56,13 @@ std::string getTimeSlot(TimeSlot ts){
 	std::string eTime = std::to_string(end.h) + ":" + std::to_string(end.m);
 
 	std::string g;
-	switch(movie.genre) {
-		case ACTION : g = "ACTION"; break;
-		case COMEDY : g = "COMEDY"; break;
-        case DRAMA : g = "DRAMA"; break;
-		case ROMANCE : g = "ROMANCE"; break;
-		case THRILLER : g = "THRILLER"; break;	
-	}
+    switch (movie.genre) {
+        case ACTION   : g = "ACTION"; break;
+        case COMEDY   : g = "COMEDY"; break;
+        case DRAMA    : g = "DRAMA";  break;
+        case ROMANCE  : g = "ROMANCE"; break;
+        case THRILLER : g = "THRILLER"; break;
+    }
 	mt = movie.title + " " + g + " (" + std::to_string(movie.duration) + " min) [starts at " + sTime + ", ends by " + eTime + "]";
 	return mt;
 }
