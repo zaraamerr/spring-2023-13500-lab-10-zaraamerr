@@ -47,11 +47,24 @@ void printMovie(Movie mv){
 }
 
 //task c
-void printTimeSlot(TimeSlot ts){
-   Time endTime = addMinutes(ts.startTime, ts.movie.duration);
-   printMovie(ts.movie);
-   std::cout << " [starts at " << ts.startTime.h << ":" << ts.startTime.m 
-              << ", ends by " << endTime.h << ":" << endTime.m << "]" << "\n";
+std::string getTimeSlot(TimeSlot ts){
+    std::string mt;
+	Movie movie = ts.movie;
+	Time start = ts.startTime;
+	std::string sTime = std::to_string(start.h) + ":" + std::to_string(start.m);
+	Time end = addMinutes(ts.startTime, movie.duration);
+	std::string eTime = std::to_string(end.h) + ":" + std::to_string(end.m);
+
+	std::string g;
+	switch(movie.genre) {
+		case ACTION : g = "ACTION"; break;
+		case COMEDY : g = "COMEDY"; break;
+        case DRAMA : g = "DRAMA"; break;
+		case ROMANCE : g = "ROMANCE"; break;
+		case THRILLER : g = "THRILLER"; break;	
+	}
+	mt = movie.title + " " + g + " (" + std::to_string(movie.duration) + " min) [starts at " + sTime + ", ends by " + eTime + "]";
+	return mt;
 }
 
 //task d
