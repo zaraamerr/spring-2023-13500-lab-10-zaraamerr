@@ -29,7 +29,7 @@ int main() {
     TimeSlot evening = {movie1, Time{16, 45}}; 
     TimeSlot dawn = {movie4, Time{6, 15}};
     TimeSlot dusk = {movie3, Time{19, 10}}; 
-    TimeSlot night = {movie5, Time{20, 45}}; 
+    TimeSlot night = {movie5, Time{20, 35}}; 
     std::cout << getTimeSlot(morning) << std::endl; //should print Back to the Future COMEDY (116 min) [starts at 9:15, ends by 11:11]
     std::cout << getTimeSlot(daytime) << std::endl; //should print Black Panther ACTION (134 min) [starts at 12:15, ends by 14:29]
     std::cout << getTimeSlot(evening) << std::endl; //should print Black Panther ACTION (134 min) [starts at 16:45, ends by 18:41]
