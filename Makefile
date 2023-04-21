@@ -7,3 +7,6 @@ tests: tests.o time.o
 main.o: main.cpp time.h movie.h timeslot.h
 
 time.o: time.cpp time.h
+
+clean:
+	rm -f main.o time.o tests.o
